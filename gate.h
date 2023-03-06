@@ -3,11 +3,14 @@
 #include <sstream>
 #include <openssl/sha.h>
 
-class Encryption
+class Gate
 {
 public:
-    Encryption(/* args */);
-    ~Encryption();
+    Gate(/* args */);
+    ~Gate();
+
+    // TODO: add a function to validate the password and username
+
     std::string hash(const std::string input)
     {
         unsigned char hash[SHA256_DIGEST_LENGTH];
@@ -22,10 +25,10 @@ public:
     }
 };
 
-Encryption::Encryption(/* args */)
+Gate::Gate(/* args */)
 {
 }
 
-Encryption::~Encryption()
+Gate::~Gate()
 {
 }

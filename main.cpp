@@ -4,7 +4,7 @@
 #include <fstream>
 #include <stdexcept>
 #include <limits>
-#include "encryption.h"
+#include "gate.h"
 
 using namespace std;
 
@@ -13,7 +13,7 @@ void signup();
 void reset();
 void close();
 
-Encryption encrypt = Encryption();
+Gate encrypt = Gate();
 
 int main()
 {
