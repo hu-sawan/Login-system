@@ -57,7 +57,7 @@ Please choose one of the following options:
         {
             system("cls");
             std::cout << "\"" << answer << "\""
-                      << " is invalid please select a valid option catch\n";
+                      << " is invalid please select a valid option\n";
         }
     }
 

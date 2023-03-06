@@ -6,7 +6,7 @@
 class Gate
 {
 public:
-    Gate(/* args */);
+    Gate();
     ~Gate();
 
     // TODO: add a function to validate the password and username
@@ -25,7 +25,7 @@ public:
     }
 };
 
-Gate::Gate(/* args */)
+Gate::Gate()
 {
 }
 
