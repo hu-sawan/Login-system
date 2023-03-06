@@ -9,7 +9,7 @@ To run this application, you need to have:
 - A command prompt or terminal
 
 ## Installation
-1. Clone the repository using `git clone https://github.com/hu-sawan/Login-System.git`
+1. Clone the repository using `git clone https://github.com/hu-sawan/Login-system.git`
 2. Navigate to the project directory using the command prompt or terminal.
 3. Compile the application using your C++ compiler by running the command `g++ -o Login-System main.cpp gate.cpp`
 4. Run the compiled application using the command `./Login-System.`
