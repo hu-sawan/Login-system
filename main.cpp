@@ -169,47 +169,60 @@ void signup()
     std::cout << "Choose a password :";
     std::getline(std::cin, password);
 
-    password = encrypt.hash(password);
+    bool is_valid = true;
 
-    std::ifstream check_user("users.txt");
-    while (check_user >> add_user_check >> add_pass_check)
+    is_valid = encrypt.validate(user_name, password);
+
+    if (!is_valid)
     {
-        if (user_name == add_user_check)
-        {
-            is_found = 1;
-            break;
-        }
-    }
-    check_user.close();
-    if (!(is_found))
-    {
-        std::ifstream check("users.txt");
-        bool is_empty = (check.get(), check.eof());
-
-        check.close();
-
-        std::ofstream add("users.txt", ios::app);
-
-        if (is_empty)
-        {
-            add << ' ' << user_name << ' ' << password << "\n";
-        }
-        else
-        {
-            add << user_name << ' ' << password << "\n";
-        }
-        add.close();
-
         system("cls");
-
-        std::cout << "Welcome to our Family!\n";
+        std::cout << "Invalid username or password, please try again\n";
         main();
     }
     else
     {
-        system("cls");
-        std::cout << "User already exists try another one\n";
-        main();
+        password = encrypt.hash(password);
+
+        std::ifstream check_user("users.txt");
+        while (check_user >> add_user_check >> add_pass_check)
+        {
+            if (user_name == add_user_check)
+            {
+                is_found = 1;
+                break;
+            }
+        }
+        check_user.close();
+        if (!(is_found))
+        {
+            std::ifstream check("users.txt");
+            bool is_empty = (check.get(), check.eof());
+
+            check.close();
+
+            std::ofstream add("users.txt", ios::app);
+
+            if (is_empty)
+            {
+                add << ' ' << user_name << ' ' << password << "\n";
+            }
+            else
+            {
+                add << user_name << ' ' << password << "\n";
+            }
+            add.close();
+
+            system("cls");
+
+            std::cout << "Welcome to our Family!\n";
+            main();
+        }
+        else
+        {
+            system("cls");
+            std::cout << "User already exists try another one\n";
+            main();
+        }
     }
 }
 
