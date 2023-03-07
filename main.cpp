@@ -115,30 +115,44 @@ void login()
             std::getline(std::cin, user_name);
             std::cout << "password : ";
             std::getline(std::cin, password);
-            password = encrypt.hash(password);
 
-            while (input >> user_check >> pass_check)
+            bool is_valid = true;
+
+            is_valid = encrypt.validate(user_name, password);
+
+            if (!is_valid)
             {
-                if (user_check == user_name && pass_check == password)
-                {
-                    is_found = 1;
-                    break;
-                }
-            }
-            input.close();
-            if (is_found)
-            {
-                // DONE BUG when calling main() catch is no longer triggered
                 system("cls");
-                std::cout << "Nice to see you back " << user_name << ", access approved!!\n";
+                std::cout << "Invalid username or password, please try again\n";
                 main();
             }
             else
             {
-                // DONE BUG when calling main() catch is no longer triggered
-                system("cls");
-                std::cout << "Sorry user_name or password is wrong, please try again\n";
-                main();
+                password = encrypt.hash(password);
+
+                while (input >> user_check >> pass_check)
+                {
+                    if (user_check == user_name && pass_check == password)
+                    {
+                        is_found = 1;
+                        break;
+                    }
+                }
+                input.close();
+                if (is_found)
+                {
+                    // DONE BUG when calling main() catch is no longer triggered
+                    system("cls");
+                    std::cout << "Nice to see you back " << user_name << ", access approved!!\n";
+                    main();
+                }
+                else
+                {
+                    // DONE BUG when calling main() catch is no longer triggered
+                    system("cls");
+                    std::cout << "Sorry user_name or password is wrong, please try again\n";
+                    main();
+                }
             }
         }
         else

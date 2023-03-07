@@ -30,7 +30,7 @@ public:
     {
         for (size_t i{}; i < input.length(); i++)
         {
-            if (!(input[i] == ' ' || input[i] == '"' || input[i] == '\''))
+            if (input[i] == ' ' || input[i] == '"' || input[i] == '\'')
             {
                 return false;
             }
@@ -41,11 +41,9 @@ public:
     bool validate(const std::string username, const std::string password)
     {
         bool first_check = check(username);
-        bool second_check = check(password);
+        bool second_check = (check(password) && password.length() >= 8) ? true : false;
 
         bool result = (first_check && second_check) ? true : false;
-
-        second_check = (password.length() >= 8) ? true : false;
 
         return result;
     }
